@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>사용자관리</title>
+
+    <link rel="stylesheet" href="css/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/jquery.multiselect.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/grid.locale-kr.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <script src="js/jquery.multiselect.js"></script>
+
+    <script src="js/common.js"></script>
+    <script src="js/modal.js"></script>
+
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="max1720">
+            <h1>
+                <a href="" class="logo">
+                    <img src="images/logo.png" alt="AMC로고">
+                </a>
+            </h1>
+            <div class="profile">
+                <img src="images/profile.png" alt="프로필아이콘">
+                <p>amc_op</p>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav_wrap max1720">
+            <div class="gnb">
+                <ul class="depth1">
+                    <li>
+                        <a href="">유저 관리</a>
+                        <ul class="depth2">
+                            <li><a href="">사용자 관리</a></li>
+                            <li><a href="">그룹 관리</a></li>
+                            <!-- <li><a href="">구성원 관리</a></li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">데이터 관리</a>
+                        <ul class="depth2">
+                            <li><a href="">이벤트&데이터 현황</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">바로가기</a>
+                        <ul class="depth2">
+                            <li><a href="">AMC (Canto)</a></li>
+                            <li><a href="">대시보드</a></li>
+                            <li><a href="">서비스데스크 메인</a></li>
+                            <li><a href="">서비스데스크 관리자</a></li>
+                            <li><a href="">위키피디아</a></li>
+                            <li><a href="">Canto Homepage</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="btn_blue_icon">
+                <button type="button">
+                    <p>협력사매핑 엑셀다운로드</p>
+                </button>
+                <button type="button">
+                    <p>대시보드 데이터 다운로드</p>
+                </button>
+            </div>
+        </div>
+        
+    </nav>
+</header>
+
+<section class="content max1720">
+    <nav class="breadcrumb" aria-label="사이트 이동 경로">
+        <ul>
+          <li>유저관리</li>
+          <li aria-current="page">사용자관리</li><!-- aria-current="page" 현재 페이지임을 의미함 -->
+        </ul>
+    </nav>
+    <h2>사용자 관리</h2>
+
+    <div class="content_wrap">
+        <div class="search_wrap">
+            <div class="left_side">
+                <div class="select_wrap">
+                    <dl>
+                        <dt>로그인 유형</dt>
+                        <dd class="select_box">
+                            <button type="button" class="btn_drop">모두보기</button>
+                            <ul>
+                                <li>모두보기</li>
+                                <li>SSO</li>
+                                <li>Canto</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="select_wrap">
+                    <dl>
+                        <dt>그룹 검색</dt>
+                        <dd class="select_box">
+                            <button type="button" class="btn_drop">모두보기</button>
+                            <ul>
+                                <li>모두보기</li>
+                                <li>메인라이브러리</li>
+                                <li>협업공간</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="select_wrap">
+                    <dl class="search_form">
+                        <dt>키워드 검색</dt>
+                        <dd class="select_box">
+                            <button type="button" class="btn_drop">카테고리 전체</button>
+                            <ul id="search_category">
+                                <li>카테고리 전체</li>
+                                <li id="firstName">이름</li>
+                                <li id="lastName">영문이름(성)</li>
+                                <li id="country">국가</li>
+                                <li id="orgName">소속</li>
+                                <li id="role">역할</li>
+                                <li id="email">이메일</li>
+                                <li id="teamNm">협력팀</li>
+                                <li id="unitNm">협력브랜드Unit</li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <input type="text" id="search_keyword" name="" placeholder="내용을 입력해 주세요.">
+                        </dd>
+                        <dd>
+                            <button type="button" class="btn_search" id="btn_search">검색</button>
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+
+            <div class="right_side">
+                <div class="btn_blue_icon">
+                    <button type="button">
+                        <p>일괄추가 템플릿 다운로드</p>
+                    </button>
+                </div>
+                <div class="btn_blue">
+                    <button type="button" class="md_open_btn" aria-haspopup="dialog" title="대화상자" data-href="#upload">
+                        <p>Canto 유저 일괄등록</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="board_wrap">
+
+            <div class="board_top">
+                <p class="total">총 <span>count</span> 명</p>
+                <button type="button" class="add" id="addRow">행추가</button>
+                <button type="button" class="edit" id="editRow">수정</button>
+                <button type="submit" class="save" id="saveRow">선택저장</button>
+                <button type="button" class="delete" id="deleteRow">선택삭제</button>
+            </div>
+
+            <div class="row" id="div_Grid" style="max-width: 100%">
+                <div>
+                    <table id="jqGrid"></table>
+                    <div id="jqGridPager"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+
+<!-- 파일업로드 : Modal [S]-->
+<div class="md_cnt" id="upload" role="dialog" aria-modal="true" aria-labelledby="mdTit1">
+    <div id="mdTit1" class="modal_top">
+        <p>파일 업로드</p>
+    </div>
+    <div class="modal_cnt">
+        <label for="file" class="button-file-upload">
+            <span class="js-button-file-upload-text button-file-upload-text">파일이 선택되지 않았습니다</span>
+            <span class="fake-upload-button">찾아보기</span>
+            <input type="file" id="file" name="file" class="js-button-file-upload-input">
+        </label>
+    </div>
+    <div class="modal_btn">
+        <button type="button" class="close">취소</button>
+        <button type="button" class="add">리스트에 추가</button>
+    </div>
+    <button type="button" class="md_close_btn" data-link="last"></button>
+</div>
+<!-- 파일업로드 : Modal [E]-->
+
+<!-- 그룹 권한 추가 / 수정 : Modal [S] -->
+<div class="md_cnt" id="group_permission" role="dialog" aria-modal="true" aria-labelledby="mdTit2">
+    <div id="mdTit2" class="modal_top">
+        <p>그룹 권한 추가 / 수정</p>
+    </div>
+
+    <div class="modal_cnt">
+        <div class="left_box">
+            <p>지정되지 않음</p>
+            <div class="list">
+                <select id="leftSelect" multiple="multiple">
+                </select>
+            </div>
+        </div>
+
+        <div class="btn_wrap">
+            <button type="button" class="right_move">
+                <img src="images/last.png" alt="">
+            </button>
+            <button type="button" class="left_move">
+                <img src="images/last.png" alt="">
+            </button>
+        </div>
+
+        <div class="right_box">
+            <p>지정된 권한</p>
+            <div class="list">
+                <select id="rightSelect" multiple="multiple">
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal_btn">
+        <button type="button" class="close">취소</button>
+        <button type="button" class="save">저장</button>
+    </div>
+    <button type="button" class="md_close_btn" data-link="last"></button>
+</div>
+<!-- 그룹 권한 추가 / 수정 : Modal [E] -->
+<script>
+    $(document).ready(function() {
+        const dataArr = [
+            {'number': '1','login':'CANTO','country':'가', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'sul', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'나', 'name':'홍길동(설화수BM팀)','familyname':'KIM','team':'설화수 BM팀','email':'axample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'innis', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'다', 'name':'홍길동(설화수BM팀)','familyname':'PARK','team':'설화수 BM팀','email':'rxample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'innis', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'CANTO','country':'라', 'name':'홍길동(설화수BM팀)','familyname':'LEE','team':'설화수 BM팀','email':'txample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'sul', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'CANTO','country':'마', 'name':'홍길동(설화수BM팀)','familyname':'JUNG','team':'설화수 BM팀','email':'xample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'la', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'CANTO','country':'바', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'la', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'CANTO','country':'사', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'uxample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'sul', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'CANTO','country':'아', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'la', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'대한민국', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'dxample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'aaa', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'대한민국', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'bxample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'bbb', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'대한민국', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'aaa', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'대한민국', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'xample@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'sul', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'대한민국', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'la', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'대한민국', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'la', 'Adobe Connect Y/N':''},
+            {'number': '1','login':'SSO','country':'대한민국', 'name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','role':'컨텐츠매니저', 'library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','partnerTeam':'설화수크리에이티브팀','brandUnit':'la', 'Adobe Connect Y/N':''},
+        ]
+
+        $("#jqGrid").jqGrid({
+            datatype: "local",
+            data: dataArr,
+            mtype : 'get',                // mtype : 데이터 전송방식을 지정한다.
+            height : 'auto',            // height : 그리드의 높이를 지정한다.
+            rowNum : 10,                    // rowNum : 한 화면에 표시할 행 개수를 지정한다.
+            viewrecords : true,
+            sortable: true,
+            loadonce : false,
+            shrinktoFit: false,
+            gridview : true,
+            rowList : [10, 50, 100],    // rowList : rowNum을 선택할 수 있는 옵션을 지정한다.
+            multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성
+            pager: '#jqGridPager',
+            afterInsertRow: function (rowid, rowData, rowelem, modal) {
+                $("#" + rowid).children("td:eq(2)").text('CANTO');
+            },
+
+            afterEditCell:function(rowid, cellname, value, iRow, iCol){
+                $("#" + rowid + "_" + cellname).blur(function(){
+                    $("#jqGrid").jqGrid("saveCell",iRow,iCol);
+                });
+            },
+            // colNames : 열의 이름을 지정한다.
+            colNames : ['No.','* 로그인유형','* 국가', '* 이름','* 영문이름(성)','* 소속','* 이메일','* 역할', '메인라이브러리','협업공간','협력 Team','* 협력 브랜드 Unit', 'Adobe Connect<br> Y/N'],
+            colModel:[
+                {name:"number", index:"ID", width: 75, align:'center'},
+                {name : 'login', index : 'login', align : 'center'},
+                {name : 'country', index : 'country', align : 'center',editable: true},
+                {name : 'name', index : 'name',  align : 'center', editable: true},
+                {name : 'familyname', index : 'familyname',  align : 'center', editable: true},
+                {name : 'team',index : 'team',  align : 'center', editable: true},
+                {name : 'email',index : 'email',  align : 'left', editable: true},
+                {name : 'role',index : 'role', align : 'left', editable: true, edittype:"select", editoptions:{value:"컨텐츠매니저:컨텐츠매니저;컨텐츠디렉터:컨텐츠디렉터;협력사 크리에이터:협력사 크리에이터"}},
+                {name : 'library',index : 'library',  align : 'left', editable: true, editoptions: { autocomplete: "off"}},
+                {name : 'space',index : 'space', align : 'left', editable: true, editoptions: { autocomplete: "off"}},
+                {name : 'partnerTeam',index : 'partnerTeam', align : 'left', editable: true},
+                {name : 'brandUnit',index : 'brandUnit', align : 'center',  editable: true, edittype: 'select', formatter: 'select',
+                    editoptions: {
+                        value: 'la:라네즈;sul:설화수;innis:이니스프리;aaa:aaa;bbb:bbb',
+                        dataInit: function (elem) {
+                            setTimeout(function () {
+                                $(elem).multiselect({
+                                    minWidth: 100, //'auto',
+                                    height: "auto",
+                                    selectedList: 3,
+                                    checkAllText: "all",
+                                    uncheckAllText: "no",
+                                    noneSelectedText: "선택해주세요",
+                                    open: function () {
+                                        var $menu = $(".ui-multiselect-menu:visible");
+                                        $menu.width("auto");
+                                        return;
+                                    }
+                                });
+                            }, 50);
+                        },
+                        multiple: true,
+                        defaultValue: 'IN'
+                    },
+                    stype: 'select', searchoptions: { sopt: ['eq', 'ne'], value: ':선택해주세요;la:라네즈;sul:설화수;innis:이니스프리;aaa:aaa;bbb:bbb' }
+                },
+                {name : 'Adobe Connect Y/N',index : 'Adobe Connect Y/N', align : 'center', editable: 'true', edittype:'checkbox', editoptions: {value:"Y:N"}, formatter:"checkbox", formatoptions: {disabled : false}}
+            ],
+
+            // 체크박스 disable
+            loadComplete: function () {
+                var rowIds  = $("#jqGrid").jqGrid('getDataIDs');
+                for( var n = 0; n <= rowIds.length; n++ ) {
+                    var rowId = rowIds[n];
+                    $("#jqGrid"+rowId).prop("disabled", true);
+                }
+                const login =  $('[aria-describedby="jqGrid_login"]');
+                login.each(function () {
+                    if($(this).text() == 'SSO'){
+                        $(this).prev().prev().children('.cbox').attr('disabled', true);
+                        $(this).parent().children('td[aria-describedby="jqGrid_Adobe Connect Y/N"]').children().attr('disabled', true);
+                        $(this).parent().addClass('ui-state-disabled'); // .ui-jqgrid-disablePointerEvents
+                    }
+                });
+
+            },
+
+            // 체크박스 주변 disable
+            beforeSelectRow: function(rowid, e) {
+                var $myGrid = $(this),
+                    i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                    cm = $myGrid.jqGrid('getGridParam', 'colModel');
+                return (cm[i].name === 'cb');
+            },
+
+            onSelectAll: function(aRowids,status) {
+                if (status) {
+                    // 전체선택시 disable된 체크박스 선택안하기
+                    const cbs = $(".jqgrow > td > input.cbox:disabled");
+                    cbs.removeAttr("checked");
+                    cbs.parents('tr').removeClass('ui-state-highlight');
+
+                    // disable된 체크박스 수정안되게 제어
+                    $("#jqGrid")[0].p.selarrrow = $("#jqGrid").find("tr.jqgrow:has(td > input.cbox:checked)")
+                        .map(function() { return this.id; }) // convert to set of ids
+                        .get(); // convert to instance of Array
+                }
+            }
+
+    });
+        // 행편집
+        $('#editRow').on('click', function() {
+            const ck_box = $('.cbox').is(':checked');
+            $(this).parent().siblings().find("[aria-describedby='jqGrid_library'], [aria-describedby='jqGrid_space']").css('pointer-events','auto');
+            if(ck_box == false){
+                alert("체크박스를 선택해주세요");
+            } else{
+                $('#addRow').attr('disabled', true);
+                const rowids = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
+                for (let i = 0; i < rowids.length; i++) {
+                    $('#jqGrid').jqGrid('editRow', rowids[i], true);
+                }
+            }
+            let checked = $('.cbox:checked');
+            checked.each(function () {
+                emailInput = $(this).parent().parent().find("input[name='email']");
+                emailInput.attr('disabled', true);
+            });
+        });
+
+        // $(document).on('mouseenter', 'td[aria-describedby="jqGrid_library"], td[aria-describedby="jqGrid_space"]' , function () {
+        //     const tooltiptxt = $(this).text();
+        //     console.log(tooltiptxt);
+        //     const child = "<div class='tooltips' style='position: absolute;z-index: 1001;background-color: #fff;white-space: normal;height: auto;padding: 10px;border: 1px solid #000;'>"+ tooltiptxt + "</div>";
+        //     $(this).append(child);
+        //     $(this).on('mouseleave', function () {
+        //         $(this).children().remove();
+        //     });
+        // });
+
+
+
+        // 행저장
+        $(document).on("click", "#saveRow", function() {
+            let checked = $('.cbox:checked');
+            let country;
+            let name;
+            let familyname;
+            let team;
+            let email;
+            let role;
+            let brandUnit;
+            let state = 'Y';
+
+            checked.each(function(){
+                //각 값 셋팅
+                country = $(this).parent().parent().find("input[name='country']").val().trim();
+                name = $(this).parent().parent().find("input[name='name']").val().trim();
+                familyname = $(this).parent().parent().find("input[name='familyname']").val().trim();
+                team = $(this).parent().parent().find("input[name='team']").val().trim();
+                email = $(this).parent().parent().find("input[name='email']").val().trim();
+                role = $(this).parent().parent().find("input[name='role'] select").val();
+                brandUnit = $(this).parent().parent().find("[aria-describedby='jqGrid_brandUnit']").children('button').children('span:nth-child(2)').text();
+
+                console.log($(this).parent().parent());
+                console.log(country);
+
+                if (country == "") {
+                    alert("국가를 입력하세요");
+                    state = 'N';
+                    return false;
+                }else if (name == "") {
+                    alert("이름을 입력하세요");
+                    state = 'N';
+                    return false;
+                }else if (familyname == "") {
+                    alert("영문이름(성)을 입력하세요");
+                    state = 'N';
+                    return false;
+                }else if (team == "") {
+                    alert("소속을 입력하세요");
+                    state = 'N';
+                    return false;
+                }else if(email == ""){
+                    alert("이메일을 입력하세요");
+                    state = 'N';
+                    return false;
+                }else if(role == ""){
+                    alert("역할을 선택하세요");
+                    state = 'N';
+                    return false;
+                }else if(brandUnit == "선택해주세요"){
+                    alert("브랜드를 선택하세요");
+                    state = 'N';
+                    return false;
+                }
+            });
+
+            if(state == 'Y') {
+                var batch = new Array();
+                var dataIds = $("#jqGrid").jqGrid("getDataIDs");
+                for (var i = 0; i < dataIds.length; i++) {
+                    try {
+                        $("#jqGrid").jqGrid("saveRow", dataIds[i], false, "clientArray");
+                        //get row data
+                        var data = $("#jqGrid").jqGrid("getRowData", dataIds[i]);
+                        if (data["IsDirty"] === "True") {
+                            batch.push(data);
+                        }
+                    } catch (ex) {
+                        alert(ex.Message);
+                        $("#jqGrid").jqGrid("restoreRow", dataIds[i]);
+                    }
+                }
+
+                $('#addRow').attr('disabled', false);
+            }
+        });
+
+
+        // 행삭제
+        $('#deleteRow').on('click', function () {
+            var selRowIds = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
+            var selRowIdsLength = selRowIds.length;
+            if(selRowIds.length == 0){
+                alert("체크박스를 선택하세요.");
+                return;
+            }
+            for(var i=0; i<selRowIdsLength; i ++) {
+                $('#jqGrid').jqGrid('delRowData', selRowIds[0])
+            }
+        });
+
+        // 행추가
+        $('#addRow').on('click', function () {
+            $("#jqGrid").jqGrid('addRow');
+        });
+
+
+        // 권한 팝업 모달창 (편집 모드일때만 열림)
+        let md_access;
+        $(document).on('click', "tr[editable = 1] td[aria-describedby='jqGrid_library'],tr[editable = 1] td[aria-describedby='jqGrid_space']",function () {
+            // 권한설정
+            let leftSelect = ["권한1","권한2","권한5","권한6"];
+            let rightSelect = ["권한3","권한4"];
+
+            let $openBtn = $(this);
+            let $mdCnt = $("#group_permission");
+
+            // 좌측(지정되지 않음) 우측(지정된) 설정
+            $('#leftSelect').empty();
+            for(var count = 0; count < leftSelect.length; count++){
+                var option = $("<option value='"+leftSelect[count]+"'>"+leftSelect[count]+"</option>");
+                $('#leftSelect').append(option);
+            }
+
+            $('#rightSelect').empty();
+            for(var count = 0; count < rightSelect.length; count++){
+                var option = $("<option value='" +rightSelect[count]+"'>"+rightSelect[count]+"</option>");
+                $('#rightSelect').append(option);
+            }
+
+
+            modal_open($openBtn,$mdCnt);
+        });
+
+        $(document).on('click', "[aria-describedby='jqGrid_library'], [aria-describedby='jqGrid_space']",function () {
+            md_access = $(this).find('input');
+        });
+        // 권한 저장, 닫히기
+        $("#group_permission").find('.save').click(function () {
+
+            //1. 저장버튼 닫기
+            $('html, body').removeAttr('style');
+            $('#dim').stop().fadeOut(function () {
+                $(this).remove();
+            });
+            $('.md_cnt').css('visibility', 'hidden').siblings().removeAttr('aria-hidden inert');
+
+
+            //2. 권한 값 가져오기
+            let access = $('#rightSelect option');
+            console.log(access);
+
+            let values = $.map(access, function(e) {
+                return e.value;
+            }); // as a comma separated string
+            values.join(',');
+            console.log(values);
+
+            md_access.val(values);
+            console.log(typeof md_access);
+
+        });
+
+    });
+</script>
+
+</body>
+</html>

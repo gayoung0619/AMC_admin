@@ -1,0 +1,908 @@
+@charset "utf-8";
+
+/* 컨텐츠의 공통 */
+.content{
+    padding-top: 40px !important;
+}
+.breadcrumb ul{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    margin-bottom: 18px;
+}
+.breadcrumb ul li{
+    position: relative;
+    margin-right: 38px;
+}
+.breadcrumb ul li:first-of-type::after{
+    content: "";
+    position: absolute;
+    background: url(../images/icon_next.png);
+    width: 7px;
+    height: 10px;
+    top: 50%;
+    right: -50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.content h2{
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 39px;
+}
+
+.search_wrap{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-bottom: 19px;
+}
+
+.left_side,
+.right_side{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.select_wrap:nth-child(1),.select_wrap:nth-child(2){
+    margin-right: 20px;
+}
+.select_wrap dt,
+.select_wrap dd{
+    display: inline-block;
+}
+.select_wrap dt{
+    margin-right: 10px;
+    font-weight: 500;
+}
+.select_wrap dd{
+    font-size: 14px;
+}
+.select_box{
+    position: relative;
+}
+.select_box .btn_drop,
+.search_form dd input{
+    border: 1px solid #ccc;
+    border-radius: 17px;
+    padding-left: 15px;
+    background-color: #f9f9f9;
+    text-align: left;
+    height: 35px;
+}
+
+.select_box .btn_drop{
+    position: relative;
+    width: 140px;
+}
+.select_wrap:nth-child(2) .select_box .btn_drop,
+.select_wrap:nth-child(2) .select_box ul{
+    width: 200px;
+}
+.select_box .btn_drop::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 14px;
+    background: url(../images/icon_dropdown.png);
+    width: 10px;
+    height: 6px;
+}
+
+.select_box ul{
+    position: absolute;
+    z-index: 100;
+    top: calc(100% - 1px);
+    padding: 10px 15px;
+    background: #f9f9f9;
+    border-radius: 0 0 17px 17px;
+    border: 1px solid #ccc;
+    width: 140px;
+    visibility: hidden;
+    overflow: hidden;
+    max-height: 0;
+    cursor: pointer;
+}
+
+.select_box ul li:not(:last-of-type){
+    padding-bottom: 15px;
+}
+.select_box ul li:hover,
+.select_box ul li:focus{
+    color: #062c5e;
+    font-weight: 700;
+}
+
+.select_box.on .btn_drop::after{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+    top: 40%;
+}
+.select_box.on .btn_drop{
+    border-radius: 17px 17px 0 0;
+}
+.select_box.on ul{
+    visibility: visible;
+    max-height: 1000px;
+}
+.select_box.on ul{
+    border-top: none;
+}
+
+.select_wrap dd input{
+    width: 210px;
+    margin: 0 5px;
+}
+.select_wrap dd input::placeholder{
+    color: #999999;
+    font-size: 14px;
+}
+
+.select_wrap dd .btn_search{
+    width: 67px;
+    height: 35px;
+    border-radius: 17px;
+    background-color: #c5deff;
+    font-size: 14px;
+    color: #333333;
+}
+
+
+
+
+.board_wrap{
+    background: #fff;
+    max-width: 100%;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.board_wrap .board_top{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.board_wrap .board_top .total{
+    font-size: 13px;
+    margin-right: 20px;
+}
+.board_wrap .board_top .total span{
+    font-weight: 700;
+}
+.board_wrap .board_top button{
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 17px;
+    margin-right: 5px;
+    width: 93px;
+    height: 34px;
+}
+
+.ui-jqgrid{
+    margin: 0 auto;
+    overflow-x: scroll;
+}
+#div_Grid,
+.ui-jqgrid{
+    max-width: 100% !important;
+}
+.ui-jqgrid-hbox{
+    position: relative;
+    z-index: 10;
+}
+.ui-jqgrid-labels th{
+    background-color: #f3f3f3;
+}
+#jqGrid tr{
+    background-color: #fff;
+}
+#jqGrid td{
+    /*white-space: pre-wrap;*/
+    border-right: none;
+}
+#jqGrid input[type="text"]{
+    background: #fff;
+    padding: 3px;
+}
+
+.ui-jqgrid-view {
+    max-width: 100% !important;
+}
+.ui-jqgrid tr.jqgrow td{
+}
+.ui-jqgrid .ui-jqgrid-htable th div{
+    height: auto;
+    line-height: 16px;
+}
+.ui-jqgrid .ui-jqgrid-htable th:not(#jqGrid_cb):not(#jqGrid_number):not(#jqGrid_login),
+.ui-jqgrid tr.jqgrow td:not(td[role="gridcell"]:first-of-type){
+    padding: 0 10px;
+}
+#jqgh_jqGrid_email,
+#jqgh_jqGrid_library,
+#jqgh_jqGrid_space,
+#jqgh_jqGrid_role{
+    text-align: left;
+}
+#jqGrid tbody tr{
+    height: 50px;
+}
+.ui-jqgrid-view{
+    font-family: NotoSansKR, Arial, Helvetica, sans-serif !important;
+}
+.ui-jqgrid-labels{
+    font-size: 15px;
+    font-weight: 700;
+    height: 58px;
+    border-bottom: 1px solid #ccc;
+}
+.ui-jqgrid-labels .ui-jqgrid-sortable{
+    text-align: center;
+}
+.ui-jqgrid-bdiv{
+    font-size: 14px;
+    line-height: 20px;
+}
+#jqGridPager{
+    margin-top: 36px !important;
+    font-size: 15px;
+}
+.ui-jqgrid .ui-jqgrid-pager{
+    height: 35px;
+}
+.ui-jqgrid .ui-pg-table td {
+    padding: 0 8px;
+}
+.ui-jqgrid .ui-pg-button:hover{
+    padding: 0 8px;
+}
+#first_jqGridPager{
+    background: url(../images/first.png) no-repeat center;
+    width: 10px;
+    height: 9px;
+}
+#prev_jqGridPager{
+    background: url(../images/prev.png) no-repeat center;
+    width: 7px;
+    height: 9px;
+    margin-left: 20px;
+}
+#next_jqGridPager{
+    background: url(../images/next.png) no-repeat center;
+    width: 7px;
+    height: 9px;
+}
+#last_jqGridPager{
+    background: url(../images/last.png) no-repeat center;
+    width: 10px;
+    height: 9px;
+}
+.ui-jqgrid .ui-pg-input,
+.ui-jqgrid .ui-jqgrid-view input,
+.ui-jqgrid .ui-jqgrid-view select,
+.ui-jqgrid .ui-jqgrid-view textarea,
+.ui-jqgrid .ui-jqgrid-view button{
+    font-size: 14px;
+}
+.ui-jqgrid .ui-jqgrid-view select{
+    width: 100% !important;
+    background-color: #f9f9f9 !important;
+}
+.ui-jqgrid .ui-pg-input{
+    height: auto;
+    text-align: center;
+}
+#sp_1_jqGridPager{
+    display: inline-block;
+    font-size: 14px;
+    width: 23px;
+    text-align: center;
+}
+.ui-pg-selbox,
+.ui-jqgrid .ui-jqgrid-view select{
+    position: relative;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    border: 1px solid #ccc;
+    border-radius: 17px;
+    width: 68px;
+    height: 40px !important;
+    padding: 0 8px;
+    background: url('../images/icon_dropdown.png') no-repeat top 14px right 13px;
+}
+.ui-jqgrid .ui-pg-selbox{
+    height:35px !important;
+    font-size: 15px;
+}
+
+.cbox{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #f3f3f3;
+}
+#jqGrid_cb{
+    width: 40px !important;
+    position: relative;
+    z-index: 3;
+}
+td[role="gridcell"]:first-of-type{
+    width: 40px !important;
+    text-align: center;
+}
+select[name="brandUnit"]{
+    background-image: none!important;
+    border-radius: 0 !important;
+    font-size: 12px !important;
+    padding: 0 !important;
+}
+select[name="brandUnit"] option{
+    padding: 3px;
+}
+.SumoSelect{
+    width: 130px;
+}
+
+/* 행추가, 삭제, 편집 버튼들 */
+#div_Grid{
+    position: relative !important;
+}
+#jqGridPager_left{
+    position: absolute !important;
+    top: 0;
+    left: 0;
+}
+
+.board_top{
+    position: relative;
+    max-width: 1900px;
+    margin: 0 auto;
+}
+.group .board_top{
+    max-width: 1560px;
+}
+#saveRow{
+}
+#saveRow.on{
+    visibility: visible;
+}
+#editRow.on{
+    visibility: hidden;
+}
+
+/* 모달 */
+#dim, .md_cnt {
+    position: fixed;
+    z-index: 1000;
+}
+
+#dim {
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.md_cnt {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    visibility: hidden;
+    overflow-y: auto;
+    height: auto;
+    width: 1000px;
+}
+
+.md_close_btn {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    width: 14px;
+    height: 15px;
+    background: url(../images/icon_btn_close.png) no-repeat center/contain;
+}
+
+.modal_top{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 60px;
+    background-color: #062c5e;
+    color: #fff;
+    font-size: 16px;
+    padding: 0 20px;
+}
+.modal_cnt{
+    text-align: center;
+    margin: 40px auto;
+    width: 900px;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    padding: 67px 0;
+}
+
+.button-file-upload {
+    display: block;
+    overflow: hidden;
+}
+input[type="file"] {
+    display: none;
+}
+.button-file-upload-text {
+    color: #555555;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 15px;
+}
+.fake-upload-button {
+    background-color: #c5deff;
+    border-radius: 17px;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    width: 93px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    position: relative;
+    text-align: center;
+}
+
+/* 모달창 */
+.modal_btn .add,
+.modal_btn .save{
+    color: #333;
+    width: 93px;
+    height: 35px;
+    background-color: #c5deff;
+    border-radius: 17px;
+    margin-top: 15px;
+}
+.modal_btn{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+    border-top: 1px solid #ededed;
+    padding: 13px 25px 13px 0;
+}
+.modal_btn .close{
+    width: 64px;
+    height: 34px;
+    background-color: #eee;
+    color: rgba(85, 85, 85, 0.7);
+    border-radius: 17px;
+}
+.modal_btn .add,
+.modal_btn .save{
+    width: 120px;
+    margin-top: 0;
+    margin-left: 10px;
+}
+#group_permission .modal_cnt{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    padding: 0;
+}
+#group_permission .left_box,
+#group_permission .right_box{
+    width: 50%;
+    text-align: left;
+}
+#group_permission .left_box p,
+#group_permission .right_box p{
+    margin-bottom: 10px;
+    padding-left: 10px;
+    font-weight: 700;
+}
+#group_permission .list{
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 350px;
+    border-radius: 17px;
+    border: 1px solid #ededed;
+}
+#group_permission .list:first-child{
+    margin-right: 20px;
+}
+#group_permission .btn_wrap{
+    margin: 0 25px;
+}
+#group_permission .btn_wrap button{
+    display: block;
+}
+#group_permission .right_move img,
+#group_permission .left_move img{
+    width: 13px;
+}
+#group_permission .left_move{
+    transform: rotate(-180deg);
+    margin-top: 15px;
+}
+#leftSelect,
+#rightSelect{
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
+    font-size: 17px;
+}
+.dashboard_cnt{
+    padding: 30px 0 30px 20px;
+}
+.dashboard_cnt .daterange,
+.dashboard_cnt .checkbox_wrap{
+    margin-top: 31px;
+}
+.dashboard_cnt label,
+.dashboard_cnt strong{
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+    margin-right: 44px;
+}
+.dashboard_cnt input[type="text"]{
+    border: 1px solid #ccc;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #f9f9f9;
+    padding: 0 14px;
+    width: 210px;
+}
+.dashboard_cnt strong{
+    float: left;
+}
+.dashboard_cnt .checkboxes{
+    display: inline-block;
+    width: 400px;
+}
+.dashboard_cnt .checkboxes > div{
+    width: calc(100% / 3);
+    float: left;
+}
+.dashboard_cnt .checkboxes > div:nth-of-type(n+4){
+    margin-top: 16px;
+}
+#dashboard .send{
+    text-align: center;
+    background-color: #c5deff;
+    width: 93px;
+    height: 34px;
+    border-radius: 17px;
+}
+#dashboard .modal_btn{
+    -webkit-justify-content: center;
+    justify-content: center;
+    border-top: none;
+    padding: 30px 0;
+}
+
+
+
+
+
+
+/* 그룹관리 css */
+#jqGrid.group_grid td{
+    white-space: nowrap !important;
+}
+#jqgh_jqGrid_groupname,
+#jqgh_jqGrid_groupexplain,
+#jqgh_jqGrid_groupnameE,
+#jqgh_jqGrid_groupexplainE,
+#jqgh_jqGrid_memberlist,
+#jqgh_jqGrid_eventnow{
+    text-align: left;
+}
+.group_wrap .board_top{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+.group_wrap .board_top .left p{
+    display: inline-block;
+}
+.group_wrap .board_top .right{
+    font-size: 14px;
+    color: #777;
+}
+.group_wrap .board_top .right p:nth-child(2){
+    margin-top: 5px;
+}
+.group_wrap #div_Grid div :not($("#load_jqGrid")){
+    position: relative;
+}
+.group_wrap #div_Grid .btn_blue_icon{
+    position: absolute;
+    bottom: 0;
+}
+
+/*그룹이름 열고정 */
+.ui-jqgrid .ui-jqgrid-hdiv,
+.ui-jqgrid .ui-jqgrid-bdiv{
+    overflow: unset;
+}
+#jqGrid_cb,
+#jqGrid td:nth-child(1),
+.board_wrap th:nth-child(3),
+#jqGrid td:nth-child(3),
+.board_wrap th:nth-child(4),
+#jqGrid td:nth-child(4),
+.board_wrap th:nth-child(5),
+#jqGrid td:nth-child(5){
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+}
+.board_wrap th:nth-child(1),
+#jqGrid td:nth-child(1){
+    left: -1px !important;
+
+}
+.board_wrap th:nth-child(3),
+#jqGrid td:nth-of-type(3){
+    left: 39px !important;
+}
+.board_wrap th:nth-child(4),
+#jqGrid tr td:nth-of-type(4){
+    left: 189px !important;
+}
+.board_wrap th:nth-child(5),
+#jqGrid tr td:nth-of-type(5){
+    left: 339px !important;
+}
+#jqGrid_cb,
+.board_wrap th:nth-child(3),
+.board_wrap th:nth-child(4),
+.board_wrap th:nth-child(5){
+    background-color: #f3f3f3;
+}
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight,
+.ui-state-highlight td,
+.ui-widget-content .ui-state-highlight td,
+.ui-widget-header .ui-state-highlight td{
+    background-color: #eff4fb !important;
+}
+.ui-jqgrid tr.jqgrow td {
+    text-overflow : ellipsis;
+    -o-text-overflow : ellipsis;
+    border-color: #ccc;
+}
+
+/* 필수입력창 */
+#info_dialog{
+    width: 300px;
+    background: #fff;
+    font-size: 15px;
+    border: 1px solid #666666;
+}
+#infocnt{
+    padding-bottom: 3px;
+}
+.ui-jqdialog{
+    padding: 10px;
+}
+.fm-button{
+    color: #333;
+    background-color: #c5deff;
+    border-radius: 17px;
+    margin-top: 15px;
+    padding: 8px 20px;
+    font-size: 13px;
+}
+
+/* 멀티셀렉트 스타일 */
+.ui-jqgrid .ui-jqgrid-view button{
+    width: 100% !important;
+}
+button.ui-multiselect{
+    border: 1px solid #ccc;
+    border-radius: 17px;
+    background: #fff;
+    padding: 2px 8px;
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+    white-space: break-spaces;
+    line-height: 15px;
+    text-align: center;
+
+}
+.ui-multiselect-menu{
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 0;
+    /*width: 150px !important;*/
+}
+.ui-multiselect-menu .ui-widget-header{
+    height: 20px;
+    background-color: #062c5e;
+    color: #fff;
+}
+.ui-multiselect-menu .ui-widget-header .ui-icon {
+    background-image: url(images/ui-icons_d8e7f3_256x240.png);
+    width: 16px;
+    height: 16px;
+    background-position: -64px -144px;
+}
+.ui-multiselect-checkboxes{
+    height: 100px !important;
+}
+.ui-icon-closethick{
+    background-position: -96px -128px !important;
+}
+.ui-icon-circle-close{
+    background-position: -32px -192px !important;
+}
+
+/* 로그인페이지 */
+.form_login {
+    position: absolute;
+    width: 600px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(92, 92, 92, 0.1);
+    padding: 50px 140px;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px #cacaca;
+    border-radius: 10px;
+}
+
+.login_container h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #000033;
+    margin-bottom: 70px;
+}
+
+.field_container:not(:last-child){
+    position: relative;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0 !important;
+    margin-top: 26px;
+}
+.field{
+    outline: none;
+    color: #555555;
+    font-weight: 700;
+    width: 100%;
+}
+.field::placeholder{
+    color: #999;
+    font-size: 14px;
+    font-weight: 400;
+}
+.field_container .icon{
+    position: absolute;
+    right: 0;
+}
+.field_container:last-child{
+    width: 100%;
+    text-align: center;
+}
+.field_container.on {
+    border-bottom-color: #4e8abe;
+}
+.field_container.on .icon{
+    display: none;
+}
+.submit {
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #c5deff;
+    color: #333333;
+    border-radius: 17px;
+    width: 80px;
+    height: 34px;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+.tooltips{
+    position: absolute;
+    z-index: 1000;
+    background-color: #f3f3f3;
+    white-space: normal;
+    max-width: 200px;
+    height: 80px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+@media screen and (max-width: 1500px) {
+    .right_side{
+        -webkit-flex-direction: column-reverse;
+        flex-direction: column-reverse;
+        -webkit-align-items: flex-end;
+        align-items: flex-end;
+    }
+    .right_side .btn_blue_icon{
+        margin-top: 10px;
+    }
+
+}
+
+.select_box ul li.on{
+    color: #062c5e;
+    font-weight: 700;
+}
+
+td[aria-describedby='jqGrid_email'] input:disabled {
+    background: none !important;
+}
+
+td[aria-describedby='jqGrid_workSpaceUrl'] input:disabled {
+    background: none !important;
+}
+
+.ui-jqgrid .ui-jqgrid-htable{
+    border-top: 2px solid #777777;
+}
+.ui-jqgrid .ui-jqgrid-btable{
+    border-bottom: 2px solid #777777;
+}
+.ui-jqgrid .ui-pager-control{
+    position: fixed;
+    max-width: 1600px;
+    padding: 0 100px;
+}
+

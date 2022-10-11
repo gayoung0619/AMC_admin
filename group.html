@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그룹관리</title>
+
+
+    <link rel="stylesheet" href="css/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/grid.locale-kr.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <script src="js/jquery.jqGrid.src.js"></script>
+
+    <script src="js/common.js"></script>
+    <script src="js/modal.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        const dataArr = [
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'vvLaneige_AP_Generaldfdfdfdfd','workspace':'Sulwhasoo_BBDO WS','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genervvval','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genervval','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Geneddral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Geneffffral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genefggral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genebbral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+
+        ];
+
+        $("#jqGrid").jqGrid({
+            datatype: "local",
+            data: dataArr,
+            mtype : 'get',                // mtype : 데이터 전송방식을 지정한다.
+            height : 'auto',            // height : 그리드의 높이를 지정한다.
+            rowNum : 10,                    // rowNum : 한 화면에 표시할 행 개수를 지정한다.
+            viewrecords : true,
+            multiselect: true,
+            shrinktoFit: false,
+            sortable: false,
+            loadonce : true,
+            gridview : true,
+            rowList : [10, 50, 100],    // rowList : rowNum을 선택할 수 있는 옵션을 지정한다.
+            pager: '#jqGridPager',
+            beforeSelectRow: function (rowid, e) {
+                var $myGrid = $(this),
+                    i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                    cm = $myGrid.jqGrid('getGridParam', 'colModel');
+                return (cm[i].name === 'cb');
+            },
+
+            // colNames : 열의 이름을 지정한다.
+            colNames : ['No.','* 브랜드','그룹 생성일','* 그룹이름(성)','워크스페이스','* 그룹설명','그룹이름(영문)','그룹 워크스페이스명(영문)','그룹설명(영문)','구성원','구성원 상세명단'],
+            colModel:[
+                {name:"number", index:"number", width: 80, align:'center'},
+                {name : 'brand', index : 'brand', align : 'center',editable: true},
+                {name : 'groupcreat',index : 'groupcreat', align : 'center',editable: true},
+                {name : 'groupname',index : 'groupname', width: 180, align : 'left', editable: true},
+                {name : 'workspace',index : 'workspace', align : 'center', editable: true},
+                {name : 'groupexplain',index : 'groupexplain', align : 'left', width: 830, editable: true},
+                {name : 'groupnameE',index : 'groupnameE', align : 'left', editable: true},
+                {name : 'groupworkspaceE',index : 'groupworkspaceE', align : 'left', width: 200, editable: true},
+                {name : 'groupexplainE',index : 'groupexplainE', align : 'left', width: 200, editable: true},
+                {name : 'member',index : 'member', align : 'center', editable: true},
+                {name : 'memberlist',index : 'memberlist', align : 'left', editable: true}
+            ]
+
+        });
+
+
+            // 행편집
+            $('#editRow').on('click', function() {
+                const ck_box = $('.cbox').is(':checked');
+                const ck_boxc = $('#jqGrid .cbox:checked').length;
+                if(ck_box == false){
+                    alert("체크박스를 선택해주세요");
+                } else{
+                    $('#addRow').attr('disabled', true);
+                    const rowids = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
+                    for (let i = 0; i < rowids.length; i++) {
+                        $('#jqGrid').jqGrid('editRow', rowids[i], true, 'clientArray');
+                    }
+                }
+
+            });
+
+
+            // 행저장
+            $(document).on("click", "#saveRow", function() {
+                let checked = $('.cbox:checked');
+                let brand;
+                let groupname;
+                let groupexplain;
+                let state = 'Y';
+
+                checked.each(function(){
+                    //각 값 셋팅
+                     brand = $(this).parent().parent().find("input[name='brand']").val().trim();
+                     groupname = $(this).parent().parent().find("input[name='groupname']").val().trim();
+                     groupexplain = $(this).parent().parent().find("input[name='groupexplain']").val().trim();
+
+                    console.log($(this).parent().parent());
+
+                    if (brand == "") {
+                        alert("브랜드를 입력하세요");
+                        state = 'N';
+                        return false;
+                    }else if (groupname == "") {
+                        alert("그룹이름(성성)을 입력하세요");
+                       state = 'N';
+                        return false;
+                    }else if (groupexplain == "") {
+                        alert("그룹설명을 입력하세요");
+                        state = 'N';
+                        return false;
+                    }
+                });
+
+                if(state == 'Y') {
+                    var batch = new Array();
+                    var dataIds = $("#jqGrid").jqGrid("getDataIDs");
+                    for (var i = 0; i < dataIds.length; i++) {
+                        try {
+                            $("#jqGrid").jqGrid("saveRow", dataIds[i], false, "clientArray");
+                            //get row data
+                            var data = $("#jqGrid").jqGrid("getRowData", dataIds[i]);
+                            if (data["IsDirty"] === "True") {
+                                batch.push(data);
+                            }
+                        } catch (ex) {
+                            alert(ex.Message);
+                            $("#jqGrid").jqGrid("restoreRow", dataIds[i]);
+                        }
+                    }
+
+                    $('#addRow').attr('disabled', false);
+                }
+            });
+
+
+            // 행삭제
+            $('#deleteRow').on('click', function () {
+                var selRowIds = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
+                var selRowIdsLength = selRowIds.length;
+                if(selRowIds.length == 0){
+                    alert("체크박스를 선택하세요.");
+                    return;
+                }
+                for(var i=0; i<selRowIdsLength; i ++) {
+                    $('#jqGrid').jqGrid('delRowData', selRowIds[0])
+                }
+            });
+
+            // 행추가
+            $('#addRow').on('click', function () {
+                $("#jqGrid").addRow();
+            });
+
+
+    });
+    </script>
+
+
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="max1720">
+            <h1>
+                <a href="" class="logo">
+                    <img src="images/logo.png" alt="AMC로고">
+                </a>
+            </h1>
+            <div class="profile">
+                <img src="images/profile.png" alt="프로필아이콘">
+                <p>amc_op</p>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav_wrap max1720">
+            <div class="gnb">
+                <ul class="depth1">
+                    <li>
+                        <a href="">유저 관리</a>
+                        <ul class="depth2">
+                            <li><a href="">사용자 관리</a></li>
+                            <li><a href="">그룹 관리</a></li>
+                            <!-- <li><a href="">구성원 관리</a></li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">데이터 관리</a>
+                        <ul class="depth2">
+                            <li><a href="">이벤트&데이터 현황</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">바로가기</a>
+                        <ul class="depth2">
+                            <li><a href="">AMC (Canto)</a></li>
+                            <li><a href="">대시보드</a></li>
+                            <li><a href="">서비스데스크 메인</a></li>
+                            <li><a href="">서비스데스크 관리자</a></li>
+                            <li><a href="">위키피디아</a></li>
+                            <li><a href="">Canto Homepage</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="btn_blue_icon">
+                <button type="button">
+                    <p>대시보드 데이터 다운로드</p>
+                </button>
+            </div>
+        </div>
+        
+    </nav>
+</header>
+
+<section class="content max1720 group">
+    <nav class="breadcrumb" aria-label="사이트 이동 경로">
+        <ul>
+          <li>유저관리</li>
+          <li aria-current="page">그룹관리</li><!-- aria-current="page" 현재 페이지임을 의미함 -->
+        </ul>
+    </nav>
+    <h2>그룹 관리</h2>
+
+    <div class="content_wrap group_wrap">
+        <div class="search_wrap">
+            <div class="left_side">
+                <div class="select_wrap">
+                    <dl>
+                        <dt>그룹 유형</dt>
+                        <dd class="select_box">
+                            <button type="button" class="btn_drop">모두보기</button>
+                            <ul>
+                                <li>모두보기</li>
+                                <li>메인라이브러리</li>
+                                <li>협업공간</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="select_wrap">
+                    <dl class="search_form">
+                        <dt>키워드 검색</dt>
+                        <dd class="select_box">
+                            <button type="button" class="btn_drop">카테고리 전체</button>
+                            <ul>
+                                <li>카테고리 전체</li>
+                                <li>브랜드</li>
+                                <li>워크스페이스</li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <input type="text" name="" placeholder="내용을 입력해 주세요.">
+                        </dd>
+                        <dd>
+                            <button type="button" class="btn_search">검색</button>
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+
+            <div class="right_side">
+                <div class="btn_blue_icon">
+                    <button type="button">
+                        <p>그룹추가 템플릿 다운로드</p>
+                    </button>
+                </div>
+                <div class="btn_blue">
+                    <button type="button" class="md_open_btn" aria-haspopup="dialog" title="대화상자" data-href="#upload">
+                        <p>그룹추가 템플릿 업로드</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="board_wrap">
+
+            <div class="board_top">
+                <div class="left">
+                    <p class="total">총 <span>count</span> 명</p>
+                    <button type="button" class="add" id="addRow">행추가</button>
+                    <button type="button" class="edit" id="editRow">수정</button>
+                    <button type="button" class="save" id="saveRow">선택저장</button>
+                    <button type="button" class="delete" id="deleteRow">선택삭제</button>
+                </div>
+                <div class="right">
+                    <p>메인 라이브러리 룰 : 브랜드_AP(ALL)_General </p>
+                    <p>협업공간 네이밍 룰 : 브랜드_ALL_사용협력사 or 사용목적</p>
+                </div>
+            </div>
+
+            <div class="row" id="div_Grid" style="width: 100%;">
+                <div>
+                    <table id="jqGrid" class="group_grid"></table>
+                    <div id="jqGridPager"></div>
+                    <div class="btn_blue_icon">
+                        <button type="button">
+                            <p>리스트 다운로드</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</section>
+
+<div class="md_cnt" id="upload" role="dialog" aria-modal="true" aria-labelledby="mdTit1">
+    <div id="mdTit1" class="modal_top">
+        <p>파일 업로드</p>
+    </div>
+    <div class="modal_cnt">
+        <label for="file" class="button-file-upload">
+            <span class="js-button-file-upload-text button-file-upload-text">파일이 선택되지 않았습니다</span>
+            <span class="fake-upload-button">찾아보기</span>
+            <input type="file" id="file" name="file" class="js-button-file-upload-input">
+          </label>
+    </div>
+    <div class="modal_btn">
+        <button type="button" class="close">취소</button>
+        <button type="button" class="add">리스트에 추가</button>
+    </div>
+    <button type="button" class="md_close_btn" data-link="last"></button>
+</div>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>데이터 & 이벤트 현황</title>
+
+
+<!--  <link rel="stylesheet" href="css/jquery-ui.css">-->
+  <link rel="stylesheet" href="css/ui.jqgrid.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/data&event.css">
+
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/grid.locale-kr.js"></script>
+  <script src="js/jquery.jqGrid.min.js"></script>
+  <script src="js/jquery.jqGrid.src.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src="js/common.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      const dataArr = [
+        {'number': '1','eventnow':'설화수 MC팀 워크스페이스 생성','datanow':'15,000GB','writer':'홍길동','writedate':'2022-02-25'},
+        {'number': '1','eventnow':'설화수 써치엠 워크스페이스 인원 대량 추가(20명)','datanow':'15,000GB','writer':'홍길동','writedate':'2022-02-21'},
+        {'number': '1','eventnow':'라네즈 MC팀 워크스페이스 삭제','datanow':'15,000GB','writer':'홍길동','writedate':'2022-02-18'},
+        {'number': '1','eventnow':'설화수 대상 기본교육 진행','datanow':'15,000GB','writer':'홍길동','writedate':'2022-01-24'},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':'2022-01-15'},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''},
+        {'number': '1','eventnow':'Laneige','datanow':'15,000GB','writer':'홍길동','writedate':''}
+
+      ];
+
+      $("#jqGrid").jqGrid({
+        datatype: "local",
+        data: dataArr,
+        mtype : 'get',
+        height : '560px',
+        viewrecords : true,
+        multiselect: true,
+        shrinktoFit: false,
+        sortable: false,
+        gridview : true,
+        multiboxonly: true, // 다음체크박스 선택시 전체크박스 해제됨
+        onSelectRow: editRow,
+
+        // colNames : 열의 이름을 지정한다.
+        colNames : ['No.','이벤트 현황','데이터 현황 (GB)','작성자','작성일'],
+        colModel:[
+          {name : "number", index:"number", width: 80, align:'center'},
+          {name : 'eventnow', index : 'eventnow', width: 250, align : 'left',editable: true},
+          {name : 'datanow',index : 'datanow', align : 'center',editable: true},
+          {name : 'writer',index : 'writer', align : 'center', editable: true},
+          {name : 'writedate',index : 'writedate', align : 'center', editable: true, sorttype: 'date',
+            editoptions: { autocomplete: "off",
+              dataInit: function (el){
+                $(el).datepicker();
+              }
+            }
+          },
+
+        ]
+      });
+
+      function pickdates(id){
+        $("#"+id+"_writedate","#jqGrid").datepicker({dateFormat:"yy-mm-dd"});
+      }
+
+      let lastSelection;
+      function editRow(id) {
+        if (id && id !== lastSelection) {
+          const grid = $("#jqGrid");
+          grid.jqGrid('restoreRow',lastSelection);
+          grid.jqGrid('editRow', id, true, pickdates);
+          lastSelection = id;
+        }
+      }
+
+      // 행삭제
+      $('#deleteRow').on('click', function () {
+        var selRowIds = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
+        var selRowIdsLength = selRowIds.length;
+        if(selRowIds.length == 0){
+          alert("체크박스를 선택하세요.");
+          return;
+        }
+        for(var i=0; i<selRowIdsLength; i++) {
+          $('#jqGrid').jqGrid('delRowData', selRowIds[i]);
+        }
+      });
+
+      // 행추가
+      $('#addRow').on('click', function () {
+        const grid = $("#jqGrid");
+        // const newData = {'number': '','eventnow':'','datanow':'','writer':'','writedate':''};
+        // let recnum = grid.getGridParam('records');
+        // grid.jqGrid('addRowData', recnum+1, newData, 'first');
+        grid.jqGrid('addRow', pickdates);
+      });
+
+      // 선택저장
+      $("#saveRow").on("click", function() {
+        var batch = new Array();
+        var dataIds = $("#jqGrid").jqGrid("getDataIDs");
+        for (var i = 0; i < dataIds.length; i++) {
+          try {
+            $("#jqGrid").jqGrid("saveRow", dataIds[i], false, "clientArray");
+            //get row data
+            var data = $("#jqGrid").jqGrid("getRowData", dataIds[i]);
+            if (data["IsDirty"] === "True") {
+              batch.push(data);
+            }
+          } catch (ex) {
+            alert(ex.Message);
+            $("#jqGrid").jqGrid("restoreRow", dataIds[i]);
+          }
+        }
+      });
+    });
+  </script>
+
+
+</head>
+<body>
+<header>
+  <div class="header">
+    <div class="max1720">
+      <h1>
+        <a href="" class="logo">
+          <img src="images/logo.png" alt="AMC로고">
+        </a>
+      </h1>
+      <div class="profile">
+        <img src="images/profile.png" alt="프로필아이콘">
+        <p>amc_op</p>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav_wrap max1720">
+      <div class="gnb">
+        <ul class="depth1">
+          <li>
+            <a href="">유저 관리</a>
+            <ul class="depth2">
+              <li><a href="">사용자 관리</a></li>
+              <li><a href="">그룹 관리</a></li>
+              <!-- <li><a href="">구성원 관리</a></li> -->
+            </ul>
+          </li>
+          <li>
+            <a href="">데이터 관리</a>
+            <ul class="depth2">
+              <li><a href="">이벤트&데이터 현황</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="">바로가기</a>
+            <ul class="depth2">
+              <li><a href="">AMC (Canto)</a></li>
+              <li><a href="">대시보드</a></li>
+              <li><a href="">서비스데스크 메인</a></li>
+              <li><a href="">서비스데스크 관리자</a></li>
+              <li><a href="">위키피디아</a></li>
+              <li><a href="">Canto Homepage</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+<section class="content max1720">
+  <nav class="breadcrumb" aria-label="사이트 이동 경로">
+    <ul>
+      <li>데이터관리</li>
+      <li aria-current="page">데일리현황</li><!-- aria-current="page" 현재 페이지임을 의미함 -->
+    </ul>
+  </nav>
+  <h2>데이터 & 이벤트 현황</h2>
+
+  <div class="content_wrap group_wrap">
+    <div class="search_wrap">
+      <div class="left_side">
+        <div class="select_wrap">
+          <dl>
+            <dt>년 - 월</dt>
+            <dd class="select_box">
+              <button type="button" class="btn_drop">년도</button>
+              <ul class="year"></ul>
+            </dd>
+            <dd class="select_box">
+              <button type="button" class="btn_drop">월</button>
+              <ul class="month"></ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="data_event">
+      <div class="board_wrap date_event">
+
+        <div class="board_top">
+          <div class="left">
+            <button type="button" class="add" id="addRow">행추가</button>
+            <button type="button" class="delete" id="deleteRow">선택삭제</button>
+            <button type="button" class="save" id="saveRow">선택저장</button>
+          </div>
+        </div>
+
+        <div class="row" id="div_Grid" style="width: 100%;">
+          <div>
+            <table id="jqGrid" class="group_grid"></table>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="storage">
+        <h2>스토리지 현황</h2>
+        <span class="">총 용량: 51,200</span>
+        <div class="graph_wrap">
+          <strong class="tit blind">스포리지 현황 차트</strong>
+          <div class="graph">
+            <!-- 기준 -->
+            <ul class="y-axis">
+              <li><span>30</span></li>
+              <li><span>20</span></li>
+              <li><span>10</span></li>
+              <li><span>0</span></li>
+            </ul>
+
+            <!-- 목록 -->
+            <div class="x-axis">
+              <ul>
+                <li><span>Oct-21</span></li>
+                <li><span>Nov-21</span></li>
+                <li><span>Nov-21</span></li>
+                <li><span>Jan-22</span></li>
+                <li><span>Feb-22</span></li>
+                <li><span>Mar-22</span></li>
+              </ul>
+            </div>
+
+
+
+            <!-- 바 그래프 (백분율 만큼 heigh값) -->
+            <ul class="bar_wrap">
+              <li><span class="bar"><span class="bar_num">20</span></span></li>
+              <li><span class="bar"><span class="bar_num">25</span></span></li>
+              <li><span class="bar"><span class="bar_num">15</span></span></li>
+              <li><span class="bar"><span class="bar_num">13</span></span></li>
+              <li><span class="bar"><span class="bar_num">20</span></span></li>
+              <li><span class="bar"><span class="bar_num">15</span></span></li>
+            </ul>
+          </div>
+        </div>
+        <button type="button">저장</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

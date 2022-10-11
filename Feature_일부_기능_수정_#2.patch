@@ -1,0 +1,582 @@
+Index: group.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/group.html b/group.html
+--- a/group.html	(revision 43287dbcf90a2ef96bb9aa204617fabe35e90e79)
++++ b/group.html	(revision 5e383a53ec34f70ca9693e48b4d0b78e9f6596f1)
+@@ -18,108 +18,6 @@
+ 
+     <script src="js/common.js"></script>
+     <script src="js/modal.js"></script>
+-
+-    <script>
+-        $(document).ready(function() {
+-        const dataArr = [
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'vvLaneige_AP_Generaldfdfdfdfd','workspace':'Sulwhasoo_BBDO WS','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genervvval','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genervval','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Geneddral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Geneffffral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genefggral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genebbral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
+-
+-        ];
+-        
+-        $("#jqGrid").jqGrid({
+-            datatype: "local",
+-            data: dataArr,
+-            mtype : 'get',                // mtype : 데이터 전송방식을 지정한다.
+-            height : 'auto',            // height : 그리드의 높이를 지정한다.
+-            rowNum : 10,                    // rowNum : 한 화면에 표시할 행 개수를 지정한다.
+-            viewrecords : true,
+-            multiselect: true,
+-            shrinktoFit: false,
+-            sortable: false,
+-            loadonce : true,
+-            gridview : true,
+-            rowList : [50, 100],    // rowList : rowNum을 선택할 수 있는 옵션을 지정한다.
+-            pager: '#jqGridPager',
+-
+-            // colNames : 열의 이름을 지정한다.
+-            colNames : ['No.','* 브랜드','그룹 생성일','* 그룹이름(성)','워크스페이스','* 그룹설명','그룹이름(영문)','그룹 워크스페이스명(영문)','그룹설명(영문)','구성원','구성원 상세명단'],
+-            colModel:[
+-                {name:"number", index:"ID", width: 80, align:'center', editable: true},
+-                {name : 'brand', index : 'brand', align : 'center',editable: true, editrules:{required:true}},
+-                {name : 'groupcreat',index : 'groupcreat', align : 'center',editable: true},
+-                {name : 'groupname',index : 'groupname', width: 180, align : 'left', editable: true, editrules:{required:true}},
+-                {name : 'workspace',index : 'workspace', align : 'center', editable: true},
+-                {name : 'groupexplain',index : 'groupexplain', align : 'left', width: 830, editable: true, editrules:{required:true}},
+-                {name : 'groupnameE',index : 'groupnameE', align : 'left', editable: true},
+-                {name : 'groupworkspaceE',index : 'groupworkspaceE', align : 'left', width: 200, editable: true},
+-                {name : 'groupexplainE',index : 'groupexplainE', align : 'left', width: 200, editable: true},
+-                {name : 'member',index : 'member', align : 'center', editable: true},
+-                {name : 'memberlist',index : 'memberlist', align : 'left', editable: true}
+-            ]
+-            
+-        });  
+-
+-        // 행편집과 행저장
+-        let row_ck = $("#jqGrid").getGridParam("selarrrow");
+-        $('#editRow').click(function() {
+-            if(row_ck.length <= 0){
+-                alert("체크박스를 선택해주세요");
+-            }else{
+-                const rowids = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
+-                for (let i = 0; i < rowids.length; i++) {
+-                    $('#jqGrid').jqGrid('editRow', rowids[i], true, 'clientArray');
+-                }
+-            }
+-        });
+-        $("#saveRow").on("click", function() {
+-                var batch = new Array();
+-                var dataIds = $("#jqGrid").jqGrid("getDataIDs");
+-                for (var i = 0; i < dataIds.length; i++) {
+-                    try {
+-                        $("#jqGrid").jqGrid("saveRow", dataIds[i], false, "clientArray");
+-                        //get row data
+-                        var data = $("#jqGrid").jqGrid("getRowData", dataIds[i]);
+-                        if (data["IsDirty"] === "True") {
+-                            batch.push(data);
+-                        }
+-                    } catch (ex) {
+-                        alert(ex.Message);
+-                        $("#jqGrid").jqGrid("restoreRow", dataIds[i]);
+-                    }
+-                }
+-        });
+-
+-        // 행삭제
+-        $('#deleteRow').click(function () {
+-            if(row_ck.length <= 0){
+-                alert("체크박스를 선택해주세요");
+-            }else{
+-                confirm("정말 삭제하시겠습니까?");
+-            }
+-            for(let i=row_ck.length-1 ; i>=0 ; i--) {
+-                $("#jqGrid").delRowData(row_ck[i]);
+-            }
+-        });
+-
+-        // 행추가
+-        $('#addRow').click(function () {
+-            $("#jqGrid").addRow();
+-        });
+-
+-
+-    });
+-    </script>
+-
+-
+ </head>
+ <body>
+ <header>
+@@ -292,5 +190,107 @@
+     <button type="button" class="md_close_btn" data-link="last"></button>
+ </div>
+ <!-- 파일업로드 : Modal [E]-->
++
++
++
++<script>
++    $(document).ready(function() {
++        const dataArr = [
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'vvLaneige_AP_Generaldfdfdfdfd','workspace':'Sulwhasoo_BBDO WS','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genervvval','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genervval','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Geneddral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Geneffffral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genefggral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_Genebbral','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++            {'number': '1','brand':'Laneige','groupcreat':'2021-11-01','groupname':'Laneige_AP_General','workspace':'','groupexplain':'[컨텐츠접근] 라네즈 메인라이브러리 컨텐츠 접근 필수권한','groupnameE':'Laneige_AP_General','groupworkspaceE':'','groupexplainE':'[Access Content] Laneige Main Library Authority','member':'{20}명', 'memberlist': '홍길동,임꺽정,웬디,피터팬,신데렐라, 라푼젤'},
++
++        ];
++
++        $("#jqGrid").jqGrid({
++            datatype: "local",
++            data: dataArr,
++            mtype : 'get',                // mtype : 데이터 전송방식을 지정한다.
++            height : 'auto',            // height : 그리드의 높이를 지정한다.
++            rowNum : 10,                    // rowNum : 한 화면에 표시할 행 개수를 지정한다.
++            viewrecords : true,
++            multiselect: true,
++            shrinktoFit: false,
++            sortable: false,
++            loadonce : true,
++            gridview : true,
++            rowList : [50, 100],    // rowList : rowNum을 선택할 수 있는 옵션을 지정한다.
++            pager: '#jqGridPager',
++
++            // colNames : 열의 이름을 지정한다.
++            colNames : ['No.','* 브랜드','그룹 생성일','* 그룹이름(성)','워크스페이스','* 그룹설명','그룹이름(영문)','그룹 워크스페이스명(영문)','그룹설명(영문)','구성원','구성원 상세명단'],
++            colModel:[
++                {name:"number", index:"ID", width: 80, align:'center', editable: true},
++                {name : 'brand', index : 'brand', align : 'center',editable: true, editrules:{required:true}},
++                {name : 'groupcreat',index : 'groupcreat', align : 'center',editable: true},
++                {name : 'groupname',index : 'groupname', width: 180, align : 'left', editable: true, editrules:{required:true}},
++                {name : 'workspace',index : 'workspace', align : 'center', editable: true},
++                {name : 'groupexplain',index : 'groupexplain', align : 'left', width: 830, editable: true, editrules:{required:true}},
++                {name : 'groupnameE',index : 'groupnameE', align : 'left', editable: true},
++                {name : 'groupworkspaceE',index : 'groupworkspaceE', align : 'left', width: 200, editable: true},
++                {name : 'groupexplainE',index : 'groupexplainE', align : 'left', width: 200, editable: true},
++                {name : 'member',index : 'member', align : 'center', editable: true},
++                {name : 'memberlist',index : 'memberlist', align : 'left', editable: true}
++            ]
++
++        });
++
++        // 행편집과 행저장
++        let row_ck = $("#jqGrid").getGridParam("selarrrow");
++        $('#editRow').click(function() {
++            if(row_ck.length <= 0){
++                alert("체크박스를 선택해주세요");
++            }else{
++                const rowids = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
++                for (let i = 0; i < rowids.length; i++) {
++                    $('#jqGrid').jqGrid('editRow', rowids[i], true, 'clientArray');
++                }
++            }
++        });
++        $("#saveRow").on("click", function() {
++            var batch = new Array();
++            var dataIds = $("#jqGrid").jqGrid("getDataIDs");
++            for (var i = 0; i < dataIds.length; i++) {
++                try {
++                    $("#jqGrid").jqGrid("saveRow", dataIds[i], false, "clientArray");
++                    //get row data
++                    var data = $("#jqGrid").jqGrid("getRowData", dataIds[i]);
++                    if (data["IsDirty"] === "True") {
++                        batch.push(data);
++                    }
++                } catch (ex) {
++                    alert(ex.Message);
++                    $("#jqGrid").jqGrid("restoreRow", dataIds[i]);
++                }
++            }
++        });
++
++        // 행삭제
++        $('#deleteRow').click(function () {
++            if(row_ck.length <= 0){
++                alert("체크박스를 선택해주세요");
++            }else{
++                confirm("정말 삭제하시겠습니까?");
++            }
++            for(let i=row_ck.length-1 ; i>=0 ; i--) {
++                $("#jqGrid").delRowData(row_ck[i]);
++            }
++        });
++
++        // 행추가
++        $('#addRow').click(function () {
++            $("#jqGrid").addRow();
++        });
++
++
++    });
++</script>
+ </body>
+ </html>
+\ No newline at end of file
+Index: user.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/user.html b/user.html
+--- a/user.html	(revision 43287dbcf90a2ef96bb9aa204617fabe35e90e79)
++++ b/user.html	(revision 5e383a53ec34f70ca9693e48b4d0b78e9f6596f1)
+@@ -14,170 +14,6 @@
+     <script src="js/jquery.jqGrid.min.js"></script>
+     <script src="js/common.js"></script>
+     <script src="js/modal.js"></script>
+-
+-    <script>
+-    $(document).ready(function() {
+-        
+-        const dataArr = [
+-            {'number': '1','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
+-            {'number':'2','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
+-            {'number':'3','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
+-            {'number':'4','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
+-            {'number':'5','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'6','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'7','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'8','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'9','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'10','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'11','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'12','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'13','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-            {'number':'14','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
+-
+-        ];
+-        
+-        $("#jqGrid").jqGrid({
+-            datatype: "local",
+-            data: dataArr,
+-            mtype : 'get',                // mtype : 데이터 전송방식을 지정한다.
+-            height : 'auto',            // height : 그리드의 높이를 지정한다.
+-            rowNum : 10,                    // rowNum : 한 화면에 표시할 행 개수를 지정한다.
+-            viewrecords : true,
+-            loadonce : true,
+-            shrinktoFit: false,
+-            sortable: false,
+-            gridview : true,
+-            rowList : [50, 100],    // rowList : rowNum을 선택할 수 있는 옵션을 지정한다.
+-            multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성
+-            // beforeSelectRow: function (rowid, e) {
+-            //     var $myGrid = $(this),
+-            //         i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+-            //         cm = $myGrid.jqGrid('getGridParam', 'colModel');
+-            //     return (cm[i].name === 'cb');
+-            // },
+-            pager: '#jqGridPager',
+-            afterInsertRow: function (rowid, rowData, rowelem) {
+-                $("#" + rowid).children("td:eq(2)").text('CANTO');
+-            },
+-
+-                // colNames : 열의 이름을 지정한다.
+-            colNames : ['No.','* 로그인유형','* 이름','* 영문이름(성)','* 소속','* 이메일','메인라이브러리','협업공간','* 역할','Adobe Connect<br> Y/N'],
+-            colModel:[
+-                {name:"number", index:"ID", width: 75, align:'center', editable: true},
+-                {name : 'login', index : 'login', width: 90, align : 'center', editrules:{required:true}, },
+-                {name : 'name', index : 'name',  align : 'center', editable: true, editrules:{required:true}},
+-                {name : 'familyname',index : 'familyname',  align : 'center', editable: true, editrules:{required:true}},
+-                {name : 'team',index : 'team',  align : 'center', editable: true, editrules:{required:true}},
+-                {name : 'email',index : 'email',  align : 'left', editable: true, editrules:{required:true}},
+-                {name : 'library',index : 'library',  align : 'left ', editable: true},
+-                {name : 'space',index : 'space', align : 'left',  editable: true},
+-                {name : 'role',index : 'role', align : 'left', editable: true, edittype:"select", editoptions:{value:"manager:컨텐츠매니저;director:컨텐츠디렉터;creator:협력사 크리에이터"}, editrules:{required:true}},
+-                {name : 'Adobe Connect Y/N',index : 'Adobe Connect Y/N', align : 'center', editable: 'true', edittype:'checkbox', editoptions: {value:"Y:N"}, formatter:"checkbox", formatoptions: {disabled : false}}
+-            ]
+-
+-        });
+-
+-
+-        var resize = false;
+-        function resizeJqGridWidth( gridId, divId, width, scroll ) {
+-            $(window).bind('resize', function() {
+-                if ( resize ) {
+-                    $('#' + gridId).setGridWidth( $('#' + divId).width() - 33, scroll );
+-                }
+-            }).trigger('resize');
+-            resize = true;
+-        }
+-
+-
+-        // 행편집과 행저장
+-        let row_ck = $("#jqGrid").getGridParam("selarrrow");
+-        $('#editRow').click(function() {
+-            if(row_ck.length <= 0){
+-                alert("체크박스를 선택해주세요");
+-            }else{
+-                const rowids = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
+-                for (let i = 0; i < rowids.length; i++) {
+-                    $('#jqGrid').jqGrid('editRow', rowids[i], true, 'clientArray');
+-                }
+-
+-            }
+-        });
+-
+-        $("#saveRow").on("click", function() {
+-            var batch = new Array();
+-            var dataIds = $("#jqGrid").jqGrid("getDataIDs");
+-            for (var i = 0; i < dataIds.length; i++) {
+-                try {
+-                    $("#jqGrid").jqGrid("saveRow", dataIds[i], false, "clientArray");
+-                    //get row data
+-                    var data = $("#jqGrid").jqGrid("getRowData", dataIds[i]);
+-                    if (data["IsDirty"] === "True") {
+-                        batch.push(data);
+-                    }
+-                } catch (ex) {
+-                    alert(ex.Message);
+-                    $("#jqGrid").jqGrid("restoreRow", dataIds[i]);
+-                }
+-            }
+-        });
+-
+-        // 행삭제
+-        $('#deleteRow').click(function () {
+-            if(row_ck.length <= 0){
+-                alert("체크박스를 선택해주세요");
+-            }else{
+-                confirm("정말 삭제하시겠습니까?");
+-            }
+-            for(let i=row_ck.length-1 ; i>=0 ; i--) {
+-                $("#jqGrid").delRowData(row_ck[i]);
+-            }
+-        });
+-
+-        // 행추가
+-        $('#addRow').click(function () {
+-            $("#jqGrid").addRow();
+-        });
+-
+-        // 문자열 자르기
+-        // $('#jqGrid td').each(function(){
+-        //     var length = 35; //글자수
+-        //     $(this).each(function(){
+-        //         if($(this).text().length >= length){
+-        //             $(this).text($(this).text().substr(0,length)+'...');
+-        //         }
+-        //     });
+-        // });
+-
+-        // 메인라이브러리, 협업공간 구성원 관리
+-        $("[aria-describedby='jqGrid_library'],[aria-describedby='jqGrid_space']").on('click', function () {
+-
+-            // 권한설정
+-            let leftSelect = ["권한1","권한2","권한5","권한6"];
+-            let rightSelect = ["권한3","권한4"];
+-
+-            let $openBtn = $(this);
+-            let $mdCnt = $("#group_permission");
+-
+-            // 좌측(지정되지 않음) 우측(지정된) 설정
+-            $('#leftSelect').empty();
+-            for(var count = 0; count < leftSelect.length; count++){
+-                var option = $("<option>"+leftSelect[count]+"</option>");
+-                $('#leftSelect').append(option);
+-            }
+-
+-            $('#rightSelect').empty();
+-            for(var count = 0; count < rightSelect.length; count++){
+-                var option = $("<option>"+rightSelect[count]+"</option>");
+-                $('#rightSelect').append(option);
+-            }
+-
+-            modal_open($openBtn,$mdCnt);
+-        });
+-
+-    });
+-</script>
+-
+-
+ </head>
+ <body>
+ <header>
+@@ -195,6 +31,7 @@
+         </div>
+     </div>
+ 
++
+     <nav>
+         <div class="nav_wrap max1720">
+             <div class="gnb">
+@@ -398,5 +235,167 @@
+ </div>
+ <!-- 그룹 권한 추가 / 수정 : Modal [E] -->
+ 
++<script>
++    $(document).ready(function() {
++
++        const dataArr = [
++            {'number': '1','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
++            {'number':'2','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
++            {'number':'3','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
++            {'number':'4','login':'SSO','name':'홍길동(설화수BM팀)','familyname':'DONG HONG','team':'설화수 BM팀','email':'example@amorepacific.com','library':'Sulwahsoo_AP_General','space':'Sulwhasoo_ALL_BBDO, Sulwhasoo_AP_BM, Sulwhasso','role':'컨텐츠매니저','Adobe Connect Y/N':''},
++            {'number':'5','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'6','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'7','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'8','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'9','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'10','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'11','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'12','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'13','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++            {'number':'14','login':'','name':'','familyname':'','team':'','email':'','library':'','space':' ','role':'','Adobe Connect Y/N':''},
++
++        ];
++
++        $("#jqGrid").jqGrid({
++            datatype: "local",
++            data: dataArr,
++            mtype : 'get',                // mtype : 데이터 전송방식을 지정한다.
++            height : 'auto',            // height : 그리드의 높이를 지정한다.
++            rowNum : 10,                    // rowNum : 한 화면에 표시할 행 개수를 지정한다.
++            viewrecords : true,
++            loadonce : true,
++            shrinktoFit: false,
++            sortable: false,
++            gridview : true,
++            rowList : [50, 100],    // rowList : rowNum을 선택할 수 있는 옵션을 지정한다.
++            multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성
++            // beforeSelectRow: function (rowid, e) {
++            //     var $myGrid = $(this),
++            //         i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
++            //         cm = $myGrid.jqGrid('getGridParam', 'colModel');
++            //     return (cm[i].name === 'cb');
++            // },
++            pager: '#jqGridPager',
++            afterInsertRow: function (rowid, rowData, rowelem) {
++                $("#" + rowid).children("td:eq(2)").text('CANTO');
++            },
++
++            // colNames : 열의 이름을 지정한다.
++            colNames : ['No.','* 로그인유형','* 이름','* 영문이름(성)','* 소속','* 이메일','메인라이브러리','협업공간','* 역할','Adobe Connect<br> Y/N'],
++            colModel:[
++                {name:"number", index:"ID", width: 75, align:'center', editable: true},
++                {name : 'login', index : 'login', width: 90, align : 'center', editrules:{required:true}, },
++                {name : 'name', index : 'name',  align : 'center', editable: true, editrules:{required:true}},
++                {name : 'familyname',index : 'familyname',  align : 'center', editable: true, editrules:{required:true}},
++                {name : 'team',index : 'team',  align : 'center', editable: true, editrules:{required:true}},
++                {name : 'email',index : 'email',  align : 'left', editable: true, editrules:{required:true}},
++                {name : 'library',index : 'library',  align : 'left ', editable: true},
++                {name : 'space',index : 'space', align : 'left',  editable: true},
++                {name : 'role',index : 'role', align : 'left', editable: true, edittype:"select", editoptions:{value:"manager:컨텐츠매니저;director:컨텐츠디렉터;creator:협력사 크리에이터"}, editrules:{required:true}},
++                {name : 'Adobe Connect Y/N',index : 'Adobe Connect Y/N', align : 'center', editable: 'true', edittype:'checkbox', editoptions: {value:"Y:N"}, formatter:"checkbox", formatoptions: {disabled : false}}
++            ]
++
++        });
++
++
++        var resize = false;
++        function resizeJqGridWidth( gridId, divId, width, scroll ) {
++            $(window).bind('resize', function() {
++                if ( resize ) {
++                    $('#' + gridId).setGridWidth( $('#' + divId).width() - 33, scroll );
++                }
++            }).trigger('resize');
++            resize = true;
++        }
++
++
++        // 행편집과 행저장
++        let row_ck = $("#jqGrid").getGridParam("selarrrow");
++        $('#editRow').click(function() {
++            if(row_ck.length <= 0){
++                alert("체크박스를 선택해주세요");
++            }else{
++                const rowids = $('#jqGrid').jqGrid('getGridParam', 'selarrrow');
++                for (let i = 0; i < rowids.length; i++) {
++                    $('#jqGrid').jqGrid('editRow', rowids[i], true, 'clientArray');
++                }
++
++            }
++        });
++
++        $("#saveRow").on("click", function() {
++            var batch = new Array();
++            var dataIds = $("#jqGrid").jqGrid("getDataIDs");
++            for (var i = 0; i < dataIds.length; i++) {
++                try {
++                    $("#jqGrid").jqGrid("saveRow", dataIds[i], false, "clientArray");
++                    //get row data
++                    var data = $("#jqGrid").jqGrid("getRowData", dataIds[i]);
++                    if (data["IsDirty"] === "True") {
++                        batch.push(data);
++                    }
++                } catch (ex) {
++                    alert(ex.Message);
++                    $("#jqGrid").jqGrid("restoreRow", dataIds[i]);
++                }
++            }
++        });
++
++        // 행삭제
++        $('#deleteRow').click(function () {
++            if(row_ck.length <= 0){
++                alert("체크박스를 선택해주세요");
++            }else{
++                confirm("정말 삭제하시겠습니까?");
++            }
++            for(let i=row_ck.length-1 ; i>=0 ; i--) {
++                $("#jqGrid").delRowData(row_ck[i]);
++            }
++        });
++
++        // 행추가
++        $('#addRow').click(function () {
++            $("#jqGrid").addRow();
++        });
++
++        // 문자열 자르기
++        // $('#jqGrid td').each(function(){
++        //     var length = 35; //글자수
++        //     $(this).each(function(){
++        //         if($(this).text().length >= length){
++        //             $(this).text($(this).text().substr(0,length)+'...');
++        //         }
++        //     });
++        // });
++
++        // 메인라이브러리, 협업공간 구성원 관리
++        $("[aria-describedby='jqGrid_library'],[aria-describedby='jqGrid_space']").on('click', function () {
++
++            // 권한설정
++            let leftSelect = ["권한1","권한2","권한5","권한6"];
++            let rightSelect = ["권한3","권한4"];
++
++            let $openBtn = $(this);
++            let $mdCnt = $("#group_permission");
++
++            // 좌측(지정되지 않음) 우측(지정된) 설정
++            $('#leftSelect').empty();
++            for(var count = 0; count < leftSelect.length; count++){
++                var option = $("<option>"+leftSelect[count]+"</option>");
++                $('#leftSelect').append(option);
++            }
++
++            $('#rightSelect').empty();
++            for(var count = 0; count < rightSelect.length; count++){
++                var option = $("<option>"+rightSelect[count]+"</option>");
++                $('#rightSelect').append(option);
++            }
++
++            modal_open($openBtn,$mdCnt);
++        });
++
++    });
++</script>
++
+ </body>
+ </html>
+\ No newline at end of file
